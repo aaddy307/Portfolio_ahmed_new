@@ -185,7 +185,8 @@ export default function Hero() {
                   className="flex items-center gap-2 sm:gap-3 lg:gap-2 icon-bounce group"
                 >
                   <div id="roleicon"
-                    className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-${role.color}-500/10 flex items-center justify-center shrink-0 border border-${role.color}-500/20 group-hover:bg-${role.color}-500/20 group-hover:scale-110 transition-all duration-300`}
+                    className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-${role.color}-500/10 flex items-center justify-center shrink-0 border border-${role.color}-500/20 group-hover:bg-${role.color}-500/20 group-hover:scale-110 transition-all duration-300 icon-float`}
+                    style={{ animationDelay: `${index * 0.2}s` }}
                   >
                     <i
                       className={`fas ${role.icon} text-${role.color}-500 text-base sm:text-lg`}
@@ -236,7 +237,8 @@ export default function Hero() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="social-icon w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:bg-orange-500/20 hover:border-orange-500 group cursor-pointer relative z-10"
+                  className="social-icon w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:bg-orange-500/20 hover:border-orange-500 group cursor-pointer relative z-10 icon-float"
+                  style={{ animationDelay: `${index * 0.15}s` }}
                 >
                   <i
                     className={`fab ${link.icon} text-sm sm:text-base group-hover:scale-110 transition-transform pointer-events-none`}
@@ -287,10 +289,10 @@ export default function Hero() {
                 </div>
               </div>
 
-              {/* Stats Cards - Responsive positioning */}
-              <div className="absolute -bottom-8 sm:-bottom-6 md:left-20 left-4 glass-card rounded-xl px-3 py-2.5 sm:px-4 sm:py-3 md:px-2 md:py-4 hover:scale-105 transition-transform cursor-pointer animate-float" style={{ animationDelay: '0.3s' }}>
+              {/* Stats Cards - Responsive positioning - Hidden on mobile */}
+              <div className="hidden md:block absolute -bottom-8 sm:-bottom-6 md:left-20 left-4 glass-card rounded-xl px-3 py-2.5 sm:px-4 sm:py-3 md:px-2 md:py-4 hover:scale-105 transition-transform cursor-pointer animate-float" style={{ animationDelay: '0.3s' }}>
                 <div id="right-content-1" className="flex items-center gap-2 sm:gap-3" >
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg bg-gradient-to-br from-orange-500 via-orange-600 to-red-600 flex items-center justify-center shrink-0 shadow-lg shadow-orange-500/50">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg bg-gradient-to-br from-orange-500 via-orange-600 to-red-600 flex items-center justify-center shrink-0 shadow-lg shadow-orange-500/50 icon-float">
                     <i className="fas fa-graduation-cap text-sm sm:text-base md:text-lg text-white"></i>
                   </div>
                   <div>
@@ -304,9 +306,9 @@ export default function Hero() {
                 </div>
               </div>
 
-              <div className="absolute -bottom-24 sm:-bottom-20 md:-bottom-6 right-4 md:right-0 glass-card rounded-xl px-3 py-2.5 sm:px-4 sm:py-3 md:px-5 md:py-4 hover:scale-105 transition-transform cursor-pointer animate-float" style={{ animationDelay: '0.7s' }}>
+              <div className="hidden md:block absolute -bottom-24 sm:-bottom-20 md:-bottom-6 right-4 md:right-0 glass-card rounded-xl px-3 py-2.5 sm:px-4 sm:py-3 md:px-5 md:py-4 hover:scale-105 transition-transform cursor-pointer animate-float" style={{ animationDelay: '0.7s' }}>
                 <div id="right-content-2" className="flex items-center gap-2 sm:gap-3">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg bg-gradient-to-br from-purple-500 via-purple-600 to-pink-600 flex items-center justify-center shrink-0 shadow-lg shadow-purple-500/50">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg bg-gradient-to-br from-purple-500 via-purple-600 to-pink-600 flex items-center justify-center shrink-0 shadow-lg shadow-purple-500/50 icon-float-delay-1">
                     <i className="fas fa-briefcase text-sm sm:text-base md:text-lg text-white"></i>
                   </div>
                   <div>

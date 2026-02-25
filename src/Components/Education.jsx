@@ -1,4 +1,24 @@
 export default function Education() {
+  // Helper function to get badge colors
+  const getBadgeStyle = (color) => {
+    const colors = {
+      orange: { bg: 'bg-orange-500/20', text: 'text-orange-500', border: 'border-orange-500/30' },
+      purple: { bg: 'bg-purple-500/20', text: 'text-purple-500', border: 'border-purple-500/30' },
+      green: { bg: 'bg-green-500/20', text: 'text-green-500', border: 'border-green-500/30' },
+    };
+    return colors[color] || colors.orange;
+  };
+
+  // Helper function to get text color
+  const getTextColor = (color) => {
+    const colors = {
+      orange: 'text-orange-500',
+      purple: 'text-purple-500',
+      green: 'text-green-500',
+    };
+    return colors[color] || 'text-orange-500';
+  };
+
   const educationData = [
     {
       type: 'Current',
@@ -53,12 +73,13 @@ export default function Education() {
             <div key={index} className="glass-card rounded-xl sm:rounded-2xl p-5 sm:p-6 hover-lift flex flex-col">
               <div className="flex flex-col items-center text-center mb-3 sm:mb-4">
                 <div
-                  className={`w-14 h-14 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-gradient-to-br ${edu.gradient} flex items-center justify-center shrink-0 hover:rotate-12 transition-transform duration-500 shadow-lg ${edu.shadowColor} mb-3 sm:mb-4`}
+                  className={`w-14 h-14 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-gradient-to-br ${edu.gradient} flex items-center justify-center shrink-0 hover:rotate-12 transition-transform duration-500 shadow-lg ${edu.shadowColor} mb-3 sm:mb-4 icon-float`}
+                  style={{ animationDelay: `${index * 0.2}s` }}
                 >
                   <i className={`fas ${edu.icon} text-xl sm:text-2xl text-white`}></i>
                 </div>
                 <span
-                  className={`inline-block px-2.5 sm:px-3 py-1 bg-${edu.color}-500/20 text-${edu.color}-500 rounded-full text-xs font-semibold mb-2 sm:mb-3`}
+                  className={`inline-block px-2.5 sm:px-3 py-1 ${getBadgeStyle(edu.color).bg} ${getBadgeStyle(edu.color).text} border ${getBadgeStyle(edu.color).border} rounded-full text-xs font-semibold mb-2 sm:mb-3`}
                 >
                   {edu.type}
                 </span>
@@ -66,7 +87,7 @@ export default function Education() {
               
               <div className="text-center flex-1">
                 <h3 className="text-lg sm:text-xl font-display font-bold mb-2 leading-tight">{edu.institution}</h3>
-                <p className={`text-sm sm:text-base text-${edu.color}-500 mb-2 sm:mb-3 font-medium`}>{edu.degree}</p>
+                <p className={`text-sm sm:text-base ${getTextColor(edu.color)} mb-2 sm:mb-3 font-medium`}>{edu.degree}</p>
                 {edu.period && (
                   <p className="text-text-secondary text-xs sm:text-sm mb-2 flex items-center justify-center gap-2">
                     <i className="far fa-calendar-alt text-[10px] sm:text-xs"></i>

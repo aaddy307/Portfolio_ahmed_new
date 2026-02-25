@@ -6,6 +6,20 @@ import Image from 'next/image';
 export default function Certifications() {
   const [selectedCert, setSelectedCert] = useState(null);
 
+  // Helper function to get shadow color based on cert color
+  const getShadowColor = (color) => {
+    const colors = {
+      green: '34, 197, 94',      // green-500
+      blue: '59, 130, 246',       // blue-500
+      purple: '168, 85, 247',     // purple-500
+      cyan: '6, 182, 212',        // cyan-500
+      orange: '249, 115, 22',     // orange-500
+      indigo: '99, 102, 241',     // indigo-500
+      pink: '236, 72, 153',       // pink-500
+    };
+    return colors[color] || '249, 115, 22'; // default to orange
+  };
+
   const certifications = [
     {
       title: 'Understanding Prompt Engineering',
@@ -103,7 +117,12 @@ export default function Certifications() {
                 <div className="flex flex-col gap-4 flex-1">
                   {/* Icon and Badge */}
                   <div className="flex items-start justify-between">
-                    <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-${cert.color}-500 to-${cert.color}-600 flex items-center justify-center shrink-0 group-hover:rotate-12 transition-transform duration-500 shadow-lg shadow-${cert.color}-500/50`}>
+                    <div 
+                      className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-${cert.color}-500 to-${cert.color}-600 flex items-center justify-center shrink-0 group-hover:rotate-12 transition-transform duration-500 icon-float`}
+                      style={{
+                        boxShadow: `0 10px 15px -3px rgba(${getShadowColor(cert.color)}, 0.4), 0 4px 6px -4px rgba(${getShadowColor(cert.color)}, 0.4)`
+                      }}
+                    >
                       <i className={`fas ${cert.icon} text-white text-lg sm:text-xl`}></i>
                     </div>
                     <span className="px-3 py-1 rounded-full text-xs font-semibold bg-orange-500/20 text-orange-500 border border-orange-500/30">
@@ -116,7 +135,10 @@ export default function Certifications() {
                     <h3 className="text-base sm:text-lg font-display font-bold mb-2 line-clamp-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-orange-500 group-hover:to-purple-500 transition-all duration-300">
                       {cert.title}
                     </h3>
-                    <p className={`text-${cert.color}-500 text-sm font-semibold mb-2`}>
+                    <p 
+                      className="text-sm font-semibold mb-2"
+                      style={{ color: `rgb(${getShadowColor(cert.color)})` }}
+                    >
                       {cert.issuer}
                     </p>
                     <div className="flex items-center gap-4 text-xs text-text-secondary mb-3">
@@ -185,7 +207,10 @@ export default function Certifications() {
                   <h3 className="text-base sm:text-2xl md:text-3xl font-display font-bold mb-1 sm:mb-2 leading-tight">
                     {selectedCert.title}
                   </h3>
-                  <p className={`text-sm sm:text-lg text-${selectedCert.color}-500 font-semibold mb-2 sm:mb-4`}>
+                  <p 
+                    className="text-sm sm:text-lg font-semibold mb-2 sm:mb-4"
+                    style={{ color: `rgb(${getShadowColor(selectedCert.color)})` }}
+                  >
                     {selectedCert.issuer}
                   </p>
                 </div>

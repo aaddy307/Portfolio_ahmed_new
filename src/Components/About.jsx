@@ -219,7 +219,7 @@ export default function About() {
                     key={index}
                     className="text-center p-1.5 sm:p-2 lg:p-3 rounded-md sm:rounded-lg bg-white/5 border border-white/10 hover:border-accent-primary/50 transition-all"
                   >
-                    <div className={`w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 mx-auto mb-1 rounded-md sm:rounded-lg bg-gradient-to-br ${stat.gradient} flex items-center justify-center shadow-lg ${stat.shadowColor}`}>
+                    <div className={`w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 mx-auto mb-1 rounded-md sm:rounded-lg bg-gradient-to-br ${stat.gradient} flex items-center justify-center shadow-lg ${stat.shadowColor} icon-float`} style={{ animationDelay: `${index * 0.15}s` }}>
                       <i className={`fas ${stat.icon} text-white text-[10px] sm:text-xs lg:text-sm`}></i>
                     </div>
                     <p className="text-sm sm:text-base lg:text-lg font-bold text-accent-primary mb-0.5">
@@ -239,7 +239,7 @@ export default function About() {
             {/* Bio Section - Who I Am */}
             <div ref={bioRef} className="glass-card rounded-xl sm:rounded-2xl p-4 sm:p-5 lg:p-6 hover-lift opacity-0" style={{animationDelay: '0.2s'}}>
               <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-                <div className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-lg bg-gradient-to-br from-orange-500 to-pink-500 flex items-center justify-center shadow-lg shadow-orange-500/50 shrink-0">
+                <div className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-lg bg-gradient-to-br from-orange-500 to-pink-500 flex items-center justify-center shadow-lg shadow-orange-500/50 shrink-0 icon-float">
                   <i className="fas fa-user text-white text-xs sm:text-sm lg:text-base"></i>
                 </div>
                 <h3 className="text-base sm:text-lg lg:text-xl font-display font-bold">
@@ -277,7 +277,7 @@ export default function About() {
             {/* Journey Timeline */}
             <div ref={journeyRef} className="glass-card rounded-xl sm:rounded-2xl p-4 sm:p-5 lg:p-6 hover-lift opacity-0" style={{animationDelay: '0.3s'}}>
               <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
-                <div className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-lg bg-gradient-to-br from-green-500 to-teal-500 flex items-center justify-center shadow-lg shadow-green-500/50 shrink-0">
+                <div className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-lg bg-gradient-to-br from-green-500 to-teal-500 flex items-center justify-center shadow-lg shadow-green-500/50 shrink-0 icon-float-delay-1">
                   <i className="fas fa-route text-white text-xs sm:text-sm lg:text-base"></i>
                 </div>
                 <h3 className="text-base sm:text-lg lg:text-xl font-display font-bold">
@@ -290,7 +290,7 @@ export default function About() {
                     key={index}
                     className="flex items-center gap-2 sm:gap-3 p-2.5 sm:p-3 lg:p-4 rounded-lg bg-white/5 border border-white/10 hover:border-accent-primary/50 transition-all group"
                   >
-                    <div className={`w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-lg bg-gradient-to-br from-${item.color}-500 to-${item.color}-600 flex items-center justify-center shadow-lg shadow-${item.color}-500/50 group-hover:scale-110 transition-transform shrink-0`}>
+                    <div className={`w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-lg bg-gradient-to-br from-${item.color}-500 to-${item.color}-600 flex items-center justify-center shadow-lg shadow-${item.color}-500/50 group-hover:scale-110 transition-transform shrink-0 icon-float`} style={{ animationDelay: `${index * 0.15}s` }}>
                       <i className={`fas ${item.icon} text-white text-xs sm:text-sm lg:text-base`}></i>
                     </div>
                     <div className="flex-1 min-w-0">
@@ -320,7 +320,7 @@ export default function About() {
         {/* Expertise Section - Full width */}
         <div ref={expertiseRef} className="glass-card rounded-xl sm:rounded-2xl p-4 sm:p-5 lg:p-6 hover-lift opacity-0" style={{animationDelay: '0.4s'}}>
           <div className="flex items-center gap-2 sm:gap-3 mb-5 sm:mb-6">
-            <div className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-lg bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center shadow-lg shadow-purple-500/50 shrink-0">
+            <div className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-lg bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center shadow-lg shadow-purple-500/50 shrink-0 icon-float-delay-2">
               <i className="fas fa-star text-white text-xs sm:text-sm lg:text-base"></i>
             </div>
             <h3 className="text-base sm:text-lg lg:text-xl font-display font-bold">
@@ -334,7 +334,10 @@ export default function About() {
               <div key={catIndex} className="glass-card rounded-lg sm:rounded-xl p-3 sm:p-4 lg:p-5 hover:border-accent-primary/30 transition-all duration-300">
                 {/* Category Header */}
                 <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4 pb-2 sm:pb-3 border-b border-white/10">
-                  <div className={`w-7 h-7 sm:w-8 sm:h-8 lg:w-9 lg:h-9 rounded-lg bg-gradient-to-br ${categoryData.gradient} flex items-center justify-center shadow-lg shrink-0`}>
+                  <div 
+                    className={`w-7 h-7 sm:w-8 sm:h-8 lg:w-9 lg:h-9 rounded-lg bg-gradient-to-br ${categoryData.gradient} flex items-center justify-center shadow-lg shrink-0 icon-float`}
+                    style={{ animationDelay: `${catIndex * 0.2}s` }}
+                  >
                     <i className={`fas ${categoryData.icon} text-white text-xs sm:text-sm lg:text-base`}></i>
                   </div>
                   <h4 className="text-sm sm:text-base lg:text-lg font-display font-bold text-text-primary">
@@ -356,7 +359,7 @@ export default function About() {
                     >
                       {/* Skill Header */}
                       <div className="flex items-center gap-2 sm:gap-2.5 mb-2">
-                        <div className={`w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-gradient-to-br ${skill.gradient} flex items-center justify-center shadow-md group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shrink-0`}>
+                        <div className={`w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-gradient-to-br ${skill.gradient} flex items-center justify-center shadow-md group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shrink-0 icon-float`}>
                           <i className={`${skill.iconClass} ${skill.icon} text-white text-xs sm:text-sm group-hover:text-sm sm:group-hover:text-base transition-all duration-300`}></i>
                         </div>
                         <div className="flex-1 min-w-0">

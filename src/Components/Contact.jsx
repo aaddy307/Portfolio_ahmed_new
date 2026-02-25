@@ -43,7 +43,7 @@ export default function Contact() {
               href="mailto:aaddy.ly143@gmail.com"
               className="flex items-center gap-3 sm:gap-4 p-5 sm:p-6 rounded-lg sm:rounded-xl bg-bg-secondary/50 hover:bg-bg-secondary transition-all hover-lift group"
             >
-              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-lg sm:rounded-xl bg-gradient-to-br from-red-500 via-orange-500 to-yellow-500 flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-transform duration-500 shrink-0 shadow-lg shadow-orange-500/50">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-lg sm:rounded-xl bg-gradient-to-br from-red-500 via-orange-500 to-yellow-500 flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-transform duration-500 shrink-0 shadow-lg shadow-orange-500/50 icon-float">
                 <i className="fas fa-envelope text-xl sm:text-2xl text-white"></i>
               </div>
               <div className="min-w-0 flex-1">
@@ -67,7 +67,8 @@ export default function Contact() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`social-icon w-12 h-12 sm:w-14 sm:h-14 rounded-lg sm:rounded-xl bg-gradient-to-br ${link.gradient} flex items-center justify-center transition-transform hover:scale-110 shadow-lg ${link.shadowColor}`}
+                  className={`social-icon w-12 h-12 sm:w-14 sm:h-14 rounded-lg sm:rounded-xl bg-gradient-to-br ${link.gradient} flex items-center justify-center transition-transform hover:scale-110 shadow-lg ${link.shadowColor} icon-float`}
+                  style={{ animationDelay: `${index * 0.15}s` }}
                   title={link.title}
                 >
                   <i className={`fab ${link.icon} text-xl sm:text-2xl text-white`}></i>
