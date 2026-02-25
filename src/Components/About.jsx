@@ -340,7 +340,7 @@ export default function About() {
                   <h4 className="text-sm sm:text-base lg:text-lg font-display font-bold text-text-primary">
                     {categoryData.category}
                   </h4>
-                  <div className="ml-auto">
+                  <div className="ml-auto hidden sm:block">
                     <span className="text-[9px] sm:text-[10px] px-2 py-0.5 rounded-full bg-accent-primary/20 text-accent-primary border border-accent-primary/30">
                       {categoryData.skills.length} skills
                     </span>
