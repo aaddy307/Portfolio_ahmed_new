@@ -1,4 +1,33 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+
 export default function Education() {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const cards = entry.target.querySelectorAll('.education-card');
+          cards.forEach((card, index) => {
+            setTimeout(() => {
+              card.classList.add('animate-fade-in-up');
+            }, index * 150);
+          });
+        }
+      });
+    }, observerOptions);
+
+    if (sectionRef.current) observer.observe(sectionRef.current);
+
+    return () => observer.disconnect();
+  }, []);
   // Helper function to get badge colors
   const getBadgeStyle = (color) => {
     const colors = {
@@ -61,40 +90,76 @@ export default function Education() {
   ];
 
   return (
-    <section id="education" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-12 sm:mb-14 lg:mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4 gradient-text leading-relaxed pb-3">My Journey</h2>
+    <section ref={sectionRef} id="education" className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute inset-0 grid-animation"></div>
+      </div>
+
+      {/* Floating Particles */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none hidden md:block">
+        {[0, 1, 2].map((i) => (
+          <div
+            key={i}
+            className="floating-particle"
+            style={{
+              top: `${[20, 55, 80][i]}%`,
+              left: `${[10, 65, 35][i]}%`,
+              animationDelay: `${i * 0.8}s`
+            }}
+          ></div>
+        ))}
+      </div>
+
+      <div className="max-w-6xl mx-auto relative z-10">
+        <div className="text-center mb-12 sm:mb-16 lg:mb-20">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-4 gradient-text leading-relaxed pb-3">
+            My Journey
+          </h2>
           <div className="section-divider"></div>
+          <p className="text-base sm:text-lg lg:text-xl text-text-secondary max-w-2xl mx-auto mt-4">
+            The educational path that shaped my passion for technology and innovation
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
           {educationData.map((edu, index) => (
-            <div key={index} className="glass-card rounded-xl sm:rounded-2xl p-5 sm:p-6 hover-lift flex flex-col">
-              <div className="flex flex-col items-center text-center mb-3 sm:mb-4">
+            <div key={index} className="education-card glass-card rounded-xl sm:rounded-2xl p-6 sm:p-7 hover-lift flex flex-col opacity-0 group">
+              <div className="flex flex-col items-center text-center mb-4 sm:mb-5">
                 <div
-                  className={`w-14 h-14 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-gradient-to-br ${edu.gradient} flex items-center justify-center shrink-0 hover:rotate-12 transition-transform duration-500 shadow-lg ${edu.shadowColor} mb-3 sm:mb-4 icon-float`}
+                  className={`w-16 h-16 sm:w-18 sm:h-18 rounded-xl bg-gradient-to-br ${edu.gradient} flex items-center justify-center shrink-0 group-hover:rotate-12 group-hover:scale-110 transition-all duration-500 shadow-lg ${edu.shadowColor} mb-4 icon-float`}
                   style={{ animationDelay: `${index * 0.2}s` }}
                 >
-                  <i className={`fas ${edu.icon} text-xl sm:text-2xl text-white`}></i>
+                  <i className={`fas ${edu.icon} text-2xl sm:text-3xl text-white`}></i>
                 </div>
                 <span
-                  className={`inline-block px-2.5 sm:px-3 py-1 ${getBadgeStyle(edu.color).bg} ${getBadgeStyle(edu.color).text} border ${getBadgeStyle(edu.color).border} rounded-full text-xs font-semibold mb-2 sm:mb-3`}
+                  className={`inline-block px-3 sm:px-4 py-1.5 ${getBadgeStyle(edu.color).bg} ${getBadgeStyle(edu.color).text} border ${getBadgeStyle(edu.color).border} rounded-full text-xs sm:text-sm font-semibold`}
                 >
                   {edu.type}
                 </span>
               </div>
               
-              <div className="text-center flex-1">
-                <h3 className="text-lg sm:text-xl font-display font-bold mb-2 leading-tight">{edu.institution}</h3>
-                <p className={`text-sm sm:text-base ${getTextColor(edu.color)} mb-2 sm:mb-3 font-medium`}>{edu.degree}</p>
+              <div className="text-center flex-1 flex flex-col">
+                <h3 className="text-lg sm:text-xl font-display font-bold mb-2 leading-tight group-hover:text-accent-primary transition-colors duration-300">
+                  {edu.institution}
+                </h3>
+                <p className={`text-sm sm:text-base ${getTextColor(edu.color)} mb-3 font-medium`}>
+                  {edu.degree}
+                </p>
                 {edu.period && (
                   <p className="text-text-secondary text-xs sm:text-sm mb-2 flex items-center justify-center gap-2">
-                    <i className="far fa-calendar-alt text-[10px] sm:text-xs"></i>
+                    <i className="far fa-calendar-alt"></i>
                     {edu.period}
                   </p>
                 )}
-                <p className="text-text-secondary text-xs sm:text-sm">{edu.status}</p>
+                <p className="text-text-secondary text-xs sm:text-sm mb-4">{edu.status}</p>
+                
+                {/* Description */}
+                <div className="mt-auto pt-4 border-t border-white/10">
+                  <p className="text-xs text-text-secondary leading-relaxed line-clamp-3">
+                    {edu.description}
+                  </p>
+                </div>
               </div>
             </div>
           ))}
